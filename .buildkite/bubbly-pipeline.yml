@@ -3,8 +3,11 @@
 steps:
 - label: "Just wait"
   command: "sleep 10000000"
+  agents:
+    queue: kubernetes
+    
 - label: "Kubectl version :congratulations: :champagne:"
-    agents:
+  agents:
     queue: kubernetes
   plugins:
     - kubernetes:
