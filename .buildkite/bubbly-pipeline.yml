@@ -2,7 +2,7 @@
     
 steps:
 - label: "Just wait"
-  command: "sleep 10000000"
+  command: "echo $$SOME_RANDOME_ENV"
   agents:
     queue: kubernetes
     
