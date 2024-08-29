@@ -1,10 +1,11 @@
-agents:
-    queue: kubernetes
+
     
 steps:
 - label: "Just wait"
   command: "sleep 10000000"
 - label: "Kubectl version :congratulations: :champagne:"
+    agents:
+    queue: kubernetes
   plugins:
     - kubernetes:
         gitEnvFrom:
