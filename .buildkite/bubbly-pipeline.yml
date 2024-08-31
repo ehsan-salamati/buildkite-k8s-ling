@@ -2,7 +2,7 @@
     
 steps:
 - label: "Just wait"
-  command: "echo -->$$SOME_RANDOME_ENV"
+  command: "echo --> $$SOME_RANDOME_ENV"
   agents:
     queue: kubernetes
     
@@ -11,9 +11,6 @@ steps:
     queue: kubernetes
   plugins:
     - kubernetes:
-        gitEnvFrom:
-          - secretRef:
-              name: my-git-ssh-credentials
         podSpec:
           containers:
             - image: alpine/k8s:1.27.5
