@@ -2,7 +2,7 @@
     
 steps:
 - label: "Just wait"
-  command: "echo --> $$SOME_RANDOME_ENV"
+  command: "echo RANMDOM_ENV=$$SOME_RANDOME_ENV"
   agents:
     queue: kubernetes
     
