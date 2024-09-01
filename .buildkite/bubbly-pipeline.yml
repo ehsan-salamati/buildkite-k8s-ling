@@ -7,7 +7,7 @@ steps:
       docker-compose#v5.4.0:
         shell: ["/bin/bash", "-e", "-c"]
         run: backend
-        propagate-environment: true
+        # propagate-environment: true
         mount-checkout: true
         config:
           - .buildkite/docker-compose.yml
