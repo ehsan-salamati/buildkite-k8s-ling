@@ -4,7 +4,7 @@ steps:
     agents:
       queue: kubernetes
     plugins:
-      docker-compose#v4.4.0:
+      docker-compose#v5.4.0:
         shell: ["/bin/bash", "-e", "-c"]
         run: backend
         propagate-environment: true
