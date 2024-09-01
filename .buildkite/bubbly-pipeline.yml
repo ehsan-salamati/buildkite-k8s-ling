@@ -7,13 +7,10 @@ steps:
       docker-compose#v4.4.0:
         shell: ["/bin/bash", "-e", "-c"]
         run: backend
-        propagate-uid-gid: true
         propagate-environment: true
         mount-checkout: true
         config:
           - .buildkite/docker-compose.yml
-        volumes:
-          - "/var/run/docker.sock:/var/run/docker.sock"
         env:
           - "SOME_RANDOME_ENV"
 
