@@ -1,20 +1,35 @@
 steps:
-- label: "Kubectl version :congratulations: :champagne:"
-  agents:
-    queue: kubernetes
-  plugins:
-    - kubernetes:
-        gitEnvFrom:
-          - secretRef:
-              name: my-git-ssh-credentials
-        podSpec:
-          containers:
-            - image: alpine/k8s:1.27.5
-              command: [kubectl]
-              args:
-                - "version"
-                - "--short"
-              resources:
-                limits:
-                  cpu: "100m"
-                  memory: "128Mi"
+  - label: "docker-compose version :congratulations: :champagne:"
+    command: "echo Hello world! RANMDOM_ENV=$$SOME_RANDOME_ENV"
+    agents:
+      queue: kubernetes
+    plugins:
+      docker-compose#v4.4.0:
+        shell: ["/bin/bash", "-e", "-c"]
+        run: backend
+        propagate-uid-gid: true
+        propagate-environment: true
+        mount-checkout: true
+        config:
+          - .buildkite/docker-compose.yml
+        volumes:
+          - "/var/run/docker.sock:/var/run/docker.sock"
+        env:
+          - "SOME_RANDOME_ENV"
+
+  - label: "Kubectl version :congratulations: :champagne:"
+    agents:
+      queue: kubernetes
+    plugins:
+      - kubernetes:
+          podSpec:
+            containers:
+              - image: alpine/k8s:1.27.5
+                command: [kubectl]
+                args:
+                  - "version"
+                  - "--short"
+                resources:
+                  limits:
+                    cpu: "100m"
+                    memory: "128Mi"
