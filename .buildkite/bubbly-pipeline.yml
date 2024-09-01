@@ -15,20 +15,23 @@ steps:
           - "/var/run/docker.sock:/var/run/docker.sock"
         env:
           - "SOME_RANDOME_ENV"
-
   - label: "Kubectl version :congratulations: :champagne:"
     agents:
       queue: kubernetes
-    plugins:
-      - kubernetes:
-          podSpec:
-            containers:
-              - image: alpine/k8s:1.27.5
-                command: [kubectl]
-                args:
-                  - "version"
-                  - "--short"
-                resources:
-                  limits:
-                    cpu: "100m"
-                    memory: "128Mi"
+    command: "sleep 1000000000"
+  # - label: "Kubectl version :congratulations: :champagne:"
+  #   agents:
+  #     queue: kubernetes
+  #   plugins:
+  #     - kubernetes:
+  #         podSpec:
+  #           containers:
+  #             - image: alpine/k8s:1.27.5
+  #               command: [kubectl]
+  #               args:
+  #                 - "version"
+  #                 - "--short"
+  #               resources:
+  #                 limits:
+  #                   cpu: "100m"
+  #                   memory: "128Mi"
