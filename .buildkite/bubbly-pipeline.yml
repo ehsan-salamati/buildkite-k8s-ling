@@ -1,11 +1,11 @@
 steps:
   - label: "docker-compose version :congratulations: :champagne:"
-    command: "echo Hello world! RANMDOM_ENV=$$SOME_RANDOME_ENV"
+    command: "echo Hello world! RANMDOM_ENV=$$SOME_RANDOME_ENV $(uname -a)"
     agents:
       queue: kubernetes
     plugins:
       docker-compose#v5.4.0:
-        shell: ["/bin/bash", "-e", "-c"]
+        #shell: ["/bin/bash", "-e", "-c"]
         run: backend
         # propagate-environment: true
         mount-checkout: true
